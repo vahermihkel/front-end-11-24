@@ -1,0 +1,79 @@
+<!-- 
+ event binding: sündmusega sidumine, kasutatakse tavalisi sulge 
+                sulgude sees on milline sündmus, paremal pool võrdusmärki
+                on kirjas, milline funktsioon käivitatakse
+ 
+ property binding: HTML atribuudi dünaamiliseks tegemine
+                  kasutatakse kandilisi sulge ja paremal pool on
+                  kas boolean (true/false, kas on peal) või muutuja väärtus
+ 
+ string interpolation: muutuja HTMLs välja kuvamine
+                  kaks loogelist sulgu, mille sees on muutuja
+
+ two-way binding: inputi sisestuse kätte saamiseks
+ -->
+
+<button (click)="changeSum(20)" [class.sum-active]="sum === 20">20€</button>
+<button (click)="changeSum(50)" [class.sum-active]="sum === 50">50€</button>
+<button (click)="changeSum(100)" [class.sum-active]="sum === 100">100€</button>
+@if (inputShown) {
+  <input [(ngModel)]="inputSum" type="number">
+  <button (click)="changeSum(inputSum)">v</button>
+} @else {
+  @if (inputSum === undefined || inputSum === 0) {
+    <span (click)="showInput()">Valin ise summa</span>
+  } @else {
+    <button (click)="showInput()" class="sum-active">{{inputSum}}€</button>
+  }
+}
+<br /><br />
+
+<div>Kinkekaart {{ sum }}€</div>
+
+<br><br>
+<div>{{ message }}</div>
+
+<br><br><br>
+
+<button [disabled]="quantity === 1" (click)="decreaseQuantity()">-</button>
+<span>{{ quantity }}</span>
+<button (click)="increaseQuantity()">+</button>
+
+<div>{{ quantity * sum }}</div>
+
+<input [(ngModel)]="receiverInfoShown" type="checkbox">
+
+<!-- @if (receiverInfoShown) {
+  <form #receiverInfoForm="ngForm">
+    <label>Kingi tegija nimi</label>
+    <input type="text"> <br>
+    <label>Kingi saaja nimi</label>
+    <input type="text"> <br>
+    <label>Kingi saaja email</label>
+    <input type="text"> <br>
+  </form>
+}
+
+<button (click)="test(receiverInfoForm)">Test</button> -->
+
+@if (receiverInfoShown) {
+    <label>Kingi tegija nimi</label>
+    <input [(ngModel)]="gifterName" type="text"> <br>
+    <label>Kingi saaja nimi</label>
+    <input [(ngModel)]="receiverName" type="text"> <br>
+    <label>Kingi saaja email</label>
+    <input [(ngModel)]="receiverEmail" type="text"> <br>
+}
+
+<!-- 
+vana Angular: 1a tagasi
+<div *ngIf="receiverInfoShown">
+  <label>Kingi tegija nimi</label>
+  <input [(ngModel)]="gifterName" type="text"> <br>
+  <label>Kingi saaja nimi</label>
+  <input [(ngModel)]="receiverName" type="text"> <br>
+  <label>Kingi saaja email</label>
+  <input [(ngModel)]="receiverEmail" type="text"> <br>
+</div> -->
+
+<button (click)="addToCart()">Lisa ostukorvi</button>
