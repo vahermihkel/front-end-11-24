@@ -1,1 +1,11 @@
-<p>cart works!</p>
+@if (products.length > 0) {
+  <button (click)="tyhjenda()">Tühjenda</button>
+  <div>Ostukorvis on {{products.length}} toodet</div>
+} @else {
+  <div>Ostukorv on tühi</div>
+}
+
+@for (product of products; track product) {
+  <div>{{product}}</div>
+  <button (click)="kustuta($index)">x</button>
+}

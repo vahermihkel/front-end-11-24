@@ -1,1 +1,9 @@
-<p>add-product works!</p>
+<div>{{sonum}}</div>
+
+<label>Toode</label> <br>
+<input [(ngModel)]="lisatavToode" type="text"> <br>
+<button (click)="lisaToode()">Lisa toode</button>
+
+@for (toode of tooted; track toode) {
+  <div>{{toode}}</div>
+}

@@ -1,1 +1,7 @@
-<p>maintain-products works!</p>
+<div>{{tooted.length}} tk</div>
+
+@for (toode of tooted; track toode) {
+  <div>{{toode}}</div>
+  <button (click)="kustuta($index)">Kustuta</button>
+  <button>Muuda</button>
+}
