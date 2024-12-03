@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ProductService } from '../../services/product.service';
+import { Toode } from '../../models/Toode';
 
 @Component({
   selector: 'app-add-product',
@@ -8,32 +10,49 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
-export class AddProductComponent {
-  tooted = ["Nobe", "BMW", "Tesla"];
-  lisatavToode = "";
+export class AddProductComponent implements OnInit {
+  tooted: Toode[] = [];
+  lisatavaTooteNimi = "";
+  lisatavaTooteHind = 0;
+  lisatavaTooteAktiivne = false;
+  lisatavaTootePilt = "";
   sonum = "";
 
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+   this.tooted = this.productService.tooted;
+  }
+
   lisaToode() {
-    if (this.lisatavToode === "") {
+    if (this.lisatavaTooteNimi === "") {
       this.sonum = "Tühja nimetusega ei saa toodet lisada!"
       return; // ära siit edasi mine
     }
-    if (this.lisatavToode[0].toLowerCase() === this.lisatavToode[0]) {
+    if (this.lisatavaTooteNimi[0].toLowerCase() === this.lisatavaTooteNimi[0]) {
       this.sonum = "Toodet ei saa lisada väikse algustähega!"
       return; // ära siit edasi mine
     }
-    if (this.lisatavToode.includes("#") || this.lisatavToode.includes("{")
-      || this.lisatavToode.includes("!") || this.lisatavToode.includes("¤")
+    if (this.lisatavaTooteNimi.includes("#") || this.lisatavaTooteNimi.includes("{")
+      || this.lisatavaTooteNimi.includes("!") || this.lisatavaTooteNimi.includes("¤")
     ) {
       this.sonum = "Kasutatud on mittelubatud märke!"
       return; // ära siit edasi mine
     }
-    if (this.tooted.includes(this.lisatavToode)) {
-      this.sonum = "Toode on juba lisatud!"
-      return;
-    }
-    this.tooted.push(this.lisatavToode);
-    this.lisatavToode = "";
+    // if (this.tooted.includes(this.lisatavToode)) {
+    //   this.sonum = "Toode on juba lisatud!"
+    //   return;
+    // }
+    this.tooted.push({
+      nimi: this.lisatavaTooteNimi, 
+      hind: this.lisatavaTooteHind, 
+      aktiivne: this.lisatavaTooteAktiivne, 
+      pilt: this.lisatavaTootePilt
+    });
+    this.lisatavaTooteNimi = "";
+    this.lisatavaTooteHind = 0;
+    this.lisatavaTootePilt = "";
+    this.lisatavaTooteAktiivne = false;
     this.sonum = "Toode lisatud!";
   }
 }

@@ -6,6 +6,10 @@
 }
 
 @for (product of products; track product) {
-  <div>{{product}}</div>
+  <div>{{product.nimi}} - {{product.hind }}</div>
   <button (click)="kustuta($index)">x</button>
+}
+
+@if (products.length > 0) {
+  <div>Kokku: {{arvutaKokku()}} €</div>
 }

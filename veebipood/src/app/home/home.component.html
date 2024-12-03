@@ -16,6 +16,12 @@
 
 
 @for (toode of tooted; track toode) {
-  <div>{{toode}}</div>
-  <button>Lisa ostukorvi</button>
+  <br>
+  <img class="product-image" src={{toode.pilt}} alt="">
+  <!-- <img [src]="toode.pilt" alt=""> -->
+
+  <div>{{toode.nimi}}</div>
+  <div>{{toode.hind}} €</div>
+  <button [disabled]="toode.aktiivne === false" (click)="lisaOstukorvi(toode)">Lisa ostukorvi</button>
+  <br>
 }

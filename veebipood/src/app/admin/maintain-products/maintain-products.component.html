@@ -1,7 +1,30 @@
 <div>{{tooted.length}} tk</div>
+<div>Toodete nimete tähemärkide arv kokku: {{arvutaKokku()}}</div>
 
-@for (toode of tooted; track toode) {
-  <div>{{toode}}</div>
-  <button (click)="kustuta($index)">Kustuta</button>
-  <button>Muuda</button>
-}
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Nimi</th>
+      <th>Hind</th>
+      <th>Aktiivne</th>
+      <th>Pilt</th>
+      <th>Tegevused</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (toode of tooted; track toode) {
+      <tr>
+        <td>{{$index}}</td>
+        <td>{{toode.nimi}}</td>
+        <td>{{toode.hind}}</td>
+        <td>{{toode.aktiivne}}</td>
+        <td>{{toode.pilt}}</td>
+        <td>
+          <button (click)="kustuta($index)">Kustuta</button>
+          <button>Muuda</button>
+        </td>
+      </tr>
+    }
+  </tbody>
+</table>

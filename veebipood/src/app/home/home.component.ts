@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
+import { Toode } from '../models/Toode';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +13,12 @@ import { ProductService } from '../services/product.service';
 })
 export class HomeComponent implements OnInit {
   // kooloniga määran tüüpi, võrdusmärgiga annan väärtust
-  tooted: string[] = [];
+  tooted: Toode[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,
+    private cartService: CartService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {                    // kustutab ära mälukoha
     this.tooted = this.productService.tooted.slice();
@@ -24,42 +30,47 @@ export class HomeComponent implements OnInit {
   sorteeriAZ() {
     // a- "Nobe" b-"BMW" ---> võrdleb neid
     // a- "BMW"  b-"Tesla" ---> võrdleb neid
-    this.tooted.sort((a,b) => a.localeCompare(b))
+    this.tooted.sort((a,b) => a.nimi.localeCompare(b.nimi))
   }
 
   sorteeriZA() {
-    this.tooted.sort((a,b) => b.localeCompare(a))
+    this.tooted.sort((a,b) => b.nimi.localeCompare(a.nimi))
   }
 
   sorteeriTahedKasv() {
-    this.tooted.sort((a,b) => a.length - b.length)
+    this.tooted.sort((a,b) => a.nimi.length - b.nimi.length)
   }
 
   sorteeriTahedKah() {
-    this.tooted.sort((a,b) => b.length - a.length)
+    this.tooted.sort((a,b) => b.nimi.length - a.nimi.length)
   }
                             //  012
   sorteeriKolmasTahtAZ() {   // Bentley
-    this.tooted.sort((a,b) => a[2].localeCompare(b[2]))
+    this.tooted.sort((a,b) => a.nimi[2].localeCompare(b.nimi[2]))
   }
 
   filtreeriLoppevadTahegaA(){
-    this.tooted = this.tooted.filter(toode => toode.endsWith("a"));
+    this.tooted = this.tooted.filter(toode => toode.nimi.endsWith("a"));
   }
 
   filtreeriTapselt5Tahelised(){
-    this.tooted = this.tooted.filter(toode => toode.length === 5);
+    this.tooted = this.tooted.filter(toode => toode.nimi.length === 5);
   }
 
   filtreeriKuniVoiTapselt6Tahelised(){
-    this.tooted = this.tooted.filter(toode => toode.length <= 6);
+    this.tooted = this.tooted.filter(toode => toode.nimi.length <= 6);
   }
 
   filtreeriKellelLyhendBE(){
-    this.tooted = this.tooted.filter(toode => toode.toLowerCase().includes("be"));
+    this.tooted = this.tooted.filter(toode => toode.nimi.toLowerCase().includes("be"));
   }
 
   filtreeriKolmasTahtS(){
-    this.tooted = this.tooted.filter(toode => toode[2] === "s");
+    this.tooted = this.tooted.filter(toode => toode.nimi[2] === "s");
+  }
+
+  lisaOstukorvi(toode: Toode) {
+    this.cartService.cart.push(toode);
+    this.toastr.success('Toode lisatud ostukorvi!', toode.nimi);
   }
 }
