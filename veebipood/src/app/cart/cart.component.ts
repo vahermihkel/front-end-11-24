@@ -15,15 +15,15 @@ export class CartComponent {
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.products = this.cartService.cart;
+    this.products = this.cartService.getCart();
   }
 
   tyhjenda() {
-    this.products = [];
+    this.cartService.emptyCart();
   }
 
   kustuta(i: number) {
-    this.products.splice(i, 1); // splice kustutamiseks, 
+    this.cartService.removeFromCart(i); // splice kustutamiseks, 
     //  esimene nr tähendab mitmendat, teine mitu tk kustutan
   }
 

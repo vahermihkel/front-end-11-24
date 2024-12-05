@@ -8,7 +8,7 @@
 <input [(ngModel)]="lisatavaTootePilt" type="text"> <br>
 <label>Toote aktiivne</label> <br>
 <input [(ngModel)]="lisatavaTooteAktiivne" type="checkbox"> <br>
-<button (click)="lisaToode()">Lisa toode</button>
+<button [disabled]="lisatavaTooteNimi === '' || lisatavaTooteHind <= 0 || lisatavaTooteHind === null" (click)="lisaToode()">{{"add-product" | translate}}</button>
 
 <div>Olemasolevad tooted:</div>
 @for (toode of tooted; track toode) {

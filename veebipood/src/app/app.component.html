@@ -1,13 +1,27 @@
-<div>
-  <button routerLink="/">Avalehele</button>
-  <button routerLink="/cart">Ostukorvi</button>
-  <button routerLink="/add-product">Lisa toode</button>
-  <button routerLink="/maintain-products">Halda tooteid</button>
-  <button routerLink="/gift-cards">Kinkekaardid</button>
-  <button routerLink="/esindused">Esindused</button>
-  <button routerLink="/tootajad">Töötajad</button>
-</div>
-<br />
+<div [class.dark]="isDarkMode">
+  <!-- <div>
+    <button routerLink="/">Avalehele</button>
+    <button routerLink="/cart">Ostukorvi</button>
+    <button routerLink="/add-product">Lisa toode</button>
+    <button routerLink="/maintain-products">Halda tooteid</button>
+    <button routerLink="/gift-cards">Kinkekaardid</button>
+    <button routerLink="/esindused">Esindused</button>
+    <button routerLink="/tootajad">Töötajad</button>
+  </div>
+  <button (click)="useLanguage('en')">English</button>
+  <button (click)="useLanguage('et')">Estonian</button>
+  <br />
+  <button >Dark mode</button>
+  <button >Light mode</button>
+  <br /> -->
 
-<router-outlet />
-<!-- FOOTER -->
+  <app-navbar />
+  @if (isDarkMode === false) {
+    <img class="icon" src="/dark.png" (click)="setDarkMode(true)" alt="">
+  } @else {
+    <img class="icon" src="/light.png" (click)="setDarkMode(false)" alt="">
+  }
+
+  <router-outlet />
+  <!-- FOOTER -->
+</div>

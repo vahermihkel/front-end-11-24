@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { Toode } from '../../models/Toode';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, TranslatePipe],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })
