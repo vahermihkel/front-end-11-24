@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Ajatempel</th>
+      <th>Hind</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (elektrihind of elektrihinnad; track elektrihind) {
+      <tr>
+        <td>{{$index}}</td>
+        <td>{{elektrihind.timestamp}}</td>
+        <td>{{elektrihind.price}}</td>
+      </tr>
+    }
+  </tbody>
+</table>

@@ -4,17 +4,23 @@ import { CartService } from '../services/cart.service';
 import { Toode } from '../models/Toode';
 import { ToastrService } from 'ngx-toastr';
 import { TranslatePipe } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { CurrencyPipe, DatePipe, PercentPipe } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, FormsModule, RouterLink, DatePipe, PercentPipe, CurrencyPipe], // | translate, [(ngModel)]
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
   // kooloniga määran tüüpi, võrdusmärgiga annan väärtust
+  kuupaev = new Date();
+  number = 50000000;
   tooted: Toode[] = [];
+  otsing = "";
 
   constructor(private productService: ProductService,
     private cartService: CartService,
@@ -51,27 +57,31 @@ export class HomeComponent implements OnInit {
   }
 
   filtreeriLoppevadTahegaA(){
-    this.tooted = this.tooted.filter(toode => toode.nimi.endsWith("a"));
+    this.tooted = this.productService.tooted.filter(toode => toode.nimi.endsWith("a"));
   }
 
   filtreeriTapselt5Tahelised(){
-    this.tooted = this.tooted.filter(toode => toode.nimi.length === 5);
+    this.tooted = this.productService.tooted.filter(toode => toode.nimi.length === 5);
   }
 
   filtreeriKuniVoiTapselt6Tahelised(){
-    this.tooted = this.tooted.filter(toode => toode.nimi.length <= 6);
+    this.tooted = this.productService.tooted.filter(toode => toode.nimi.length <= 6);
   }
 
   filtreeriKellelLyhendBE(){
-    this.tooted = this.tooted.filter(toode => toode.nimi.toLowerCase().includes("be"));
+    this.tooted = this.productService.tooted.filter(toode => toode.nimi.toLowerCase().includes("be"));
   }
 
   filtreeriKolmasTahtS(){
-    this.tooted = this.tooted.filter(toode => toode.nimi[2] === "s");
+    this.tooted = this.productService.tooted.filter(toode => toode.nimi[2] === "s");
   }
 
   lisaOstukorvi(toode: Toode) {
     this.cartService.addToCart(toode);
     this.toastr.success('Toode lisatud ostukorvi!', toode.nimi);
+  }
+
+  otsi() {
+    this.tooted = this.productService.tooted.filter(toode => toode.nimi.toLowerCase().includes(this.otsing.toLowerCase()));
   }
 }

@@ -1,0 +1,11 @@
+<form [formGroup]="muudaToodeForm" (submit)="onSubmit()">
+  <label>Nimi</label> <br>
+  <input formControlName="nimi" type="text"> <br>
+  <label>Hind</label> <br>
+  <input formControlName="hind" type="text"> <br>
+  <label>Pilt</label> <br>
+  <input formControlName="pilt" type="text"> <br>
+  <label>Aktiivne</label> <br>
+  <input formControlName="aktiivne" type="checkbox"> <br>
+  <button>Muuda</button>
+</form>

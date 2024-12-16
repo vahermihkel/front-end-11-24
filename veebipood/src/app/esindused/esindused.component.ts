@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-esindused',
   standalone: true,
-  imports: [],
+  imports: [MapComponent],
   templateUrl: './esindused.component.html',
   styleUrl: './esindused.component.css'
 })

@@ -1,3 +1,8 @@
+<div>{{kuupaev | date:'dd.MM.YYYY HH:mm'}}</div>
+<div>{{number | percent }}</div>
+<div>{{number * 100 }}%</div>
+<div>{{number | currency:'EUR' }}</div>
+
 <div>{{tooted.length}} tk</div>
 
 <button (click)="sorteeriAZ()">{{"sort-az" | translate}}</button>
@@ -14,6 +19,11 @@
 <button (click)="filtreeriKellelLyhendBE()">Jäta alles kellel sõnalühend 'be' sees</button>
 <button (click)="filtreeriKolmasTahtS()">Jäta alles kellel kolmas täht 's'</button>
 
+<br><br>
+
+<label>Otsi</label>
+<input [(ngModel)]="otsing" (ngModelChange)="otsi()" type="text">
+<!-- <button (click)="otsi()">Otsi</button> -->
 
 @for (toode of tooted; track toode) {
   <br>
@@ -23,5 +33,7 @@
   <div>{{toode.nimi}}</div>
   <div>{{toode.hind}} €</div>
   <button [disabled]="toode.aktiivne === false" (click)="lisaOstukorvi(toode)">{{"add-to-cart"  | translate}}</button>
+  <button routerLink="{{'/toode/' + toode.nimi}}">Vt lähemalt</button>
+  <!-- <button [routerLink]="['/toode/', toode.nimi]">Vt lähemalt</button> -->
   <br>
 }

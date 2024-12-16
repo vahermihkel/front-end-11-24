@@ -33,32 +33,54 @@ export class AppComponent {
   }
 }
 
-// ngForm
-// kogus ostukorvis --> keeruline   objekt objektis
-// subject - ostukorvi summa Navbari
-// URL parameeter
-// Reactive Form
-// alamkomponendid ja andmete saatmine. dark-mode korda teha
-// pipe  | translate.
-// directives   HTML-atribuut   class=""  disabled
-// Kaardirakendus - Leaflet / Google Maps
-// E-maili saatmine
+// +ngForm
+// --> +kogus ostukorvis --> keeruline   objekt objektis
+// --> +subject - ostukorvi summa Navbari
+// +E-maili saatmine
 // API päringud -> 
 // - tarnija tooted
+// 1. https://api.escuelajs.co/api/v1/products KOOS -> supplier-escuela
+// 2. https://restcountries.com/v3.1/all?fields=name KOOS -> restcountries
+
+// https://fakestoreapi.com/products KOJU -> supplier-store
+// https://www.freetestapi.com/api/v1/books KOJU -> supplier-book
+// https://www.freetestapi.com/api/v1/countries KOJU -> ng g c admin/api/countries
+// https://marineregions.org/rest/getGazetteerTypes.json KOJU -> ng g c admin/api/dictionary
+
+// https://environment.data.gov.uk/flood-monitoring/id/floods KOOS
+// https://dashboard.elering.ee/api/nps/price KOOS
+// https://api.itbook.store/1.0/search/angular
+// https://public.opendatasoft.com/api/explore/v2.1/catalog/datasets/all-vehicles-model/records?limit=100
+
 // - pakiautomaadid Omniva
 // - makse (tagasi kaupmehe juurde) EveryPay
+// ++Kaardirakendus - Leaflet / Google Maps
+// ++URL parameeter
+// ++Reactive Form
+// pipe  | translate.
 // andmebaas - Firebase
+// alamkomponendid ja andmete saatmine. dark-mode korda teha
+// directives   HTML-atribuut   class=""  disabled
 // Autentimine -> sisselogimine/registreerumine Firebase
 
 // Mobiilirakendused -> Ionic
 // Back-end -> Spring/Java
 
+// 4.----> järgi teha
 // L 7.12
-// T 10.12
-// R 13.12
-// T 17.12
-// R 20.12
-// jõuluajal kohtumisi arutame kuupäevade lähenedes
+// E 09.12
+// 8. R 13.12 KOJU: Bakery-shop. API otspunktid. Tootajad/Esindused muuda. Subject
+// 9. E 16.12 alamkomponendid. subject. KOJU: Webshop
+//10. N 19.12 
+//11. T 24.12 autentimine
+//12. R 27.12
+//13. T 31.12
+//14. R 03.01
+// 4. K 08.01
+//15a.K 22.01 9.00-10.30
+//15b.K 29.01 9.00-10.30
+
+// 29.01 ---> ametlik lõpuaeg
 
 // KOKKU: 15 kohtumist
 // 60ak/h --> 4ak/h   60/4=15

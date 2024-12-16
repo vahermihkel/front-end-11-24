@@ -1,0 +1,13 @@
+<!-- Template-driven form:   #signupForm="ngForm" -->
+<!-- Reactive form:          [formGroup]="profileForm" -->
+<form [formGroup]="profileForm" (submit)="changeProfile()">
+  <label>Email</label> <br>
+  <input formControlName="email" type="text"> <br>
+  <label>Parool</label> <br>
+  <input formControlName="parool" type="text"> <br>
+  <label>Eesnimi</label> <br>
+  <input formControlName="eesnimi" type="text"> <br>
+  <label>Perekonnanimi</label> <br>
+  <input formControlName="perenimi" type="text"> <br>
+  <button [disabled]="profileForm.invalid">Muuda profiili</button> <br>
+</form>

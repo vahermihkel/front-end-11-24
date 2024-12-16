@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Toode } from '../models/Toode';
+import { OstukorviToode } from '../models/OstukorviToode';
 
 @Component({
   selector: 'app-cart',
@@ -10,16 +11,28 @@ import { Toode } from '../models/Toode';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  products: Toode[] = [];
+  products: OstukorviToode[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) {
+    console.log("1. Logimine constructorist - failide ühendamiseks");
+  }
 
   ngOnInit(): void {
     this.products = this.cartService.getCart();
+    console.log("2. Logimine ngOnInitist - muutujatele väärtuste andmiseks");
+    console.log("3. HTML");
   }
 
   tyhjenda() {
     this.cartService.emptyCart();
+  }
+
+  decreaseKogus(ostukorviToode: OstukorviToode) {
+    this.cartService.decreaseQuantity(ostukorviToode);
+  }
+
+  increaseKogus(ostukorviToode: OstukorviToode) {
+    this.cartService.increaseQuantity(ostukorviToode);
   }
 
   kustuta(i: number) {
@@ -28,10 +41,6 @@ export class CartComponent {
   }
 
   arvutaKokku() {
-    let summa = 0;
-    this.products.forEach(toode => {
-      summa += toode.hind;
-    });
-    return summa;
+    return this.cartService.calculateSumOfCart();
   }
 }

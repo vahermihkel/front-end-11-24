@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Nimi</th>
+      <th>Hind</th>
+      <th>Kirjeldus</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (riik of riigid; track riik) {
+      <tr>
+        <td>{{$index}}</td>
+        <td>{{riik.name.common}}</td>
+        <td>{{riik.capital[0]}}</td>
+        <td> <img class="image" src={{riik.flags.png}} alt=""> </td>
+      </tr>
+    }
+  </tbody>
+</table>

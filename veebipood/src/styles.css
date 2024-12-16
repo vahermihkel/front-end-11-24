@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 /* body {
   background-color: aqua;
 } */
@@ -57,4 +56,17 @@ p, .translated {
 
 .icon:active {
   padding: 1px;
+}
+
+td, th {
+  border: 1px solid black;
+}
+
+th {
+  background-color: lightgray;
+}
+
+.image {
+  width: 200px;
+  height: 100px;
 }

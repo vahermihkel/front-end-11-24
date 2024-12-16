@@ -1,0 +1,18 @@
+<div>{{sonum}}</div>
+
+<form #addProductForm="ngForm" (submit)="lisaToode(addProductForm)">
+  <label>Toote nimi</label> <br>
+  <input ngModel name="nimi" type="text"> <br>
+  <label>Toote hind</label> <br>
+  <input ngModel name="hind"  type="number"> <br>
+  <label>Toote pilt</label> <br>
+  <input ngModel name="pilt"  type="text"> <br>
+  <label>Toote aktiivne</label> <br>
+  <input ngModel name="aktiivne"  type="checkbox"> <br>
+  <button>{{"add-product" | translate}}</button>
+</form>
+
+<div>Olemasolevad tooted:</div>
+@for (toode of tooted; track toode) {
+  <div>{{$index + 1}}. {{toode.nimi}}</div>
+}

@@ -1,0 +1,12 @@
+td, th {
+  border: 1px solid black;
+}
+
+th {
+  background-color: lightgray;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+}

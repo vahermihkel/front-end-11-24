@@ -1,0 +1,23 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Nimi</th>
+      <th>Hind</th>
+      <th>Kirjeldus</th>
+      <th>Pilt</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (toode of tooted; track toode) {
+      <tr>
+        <td>{{$index}}</td>
+        <td>{{toode.title}}</td>
+        <td>{{toode.price}}</td>
+        <td>{{toode.description}}</td>
+        <td><img class="image" src={{toode.images[0]}} alt=""></td>
+      </tr>
+    }
+  </tbody>
+</table>

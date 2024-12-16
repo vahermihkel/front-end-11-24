@@ -11,10 +11,7 @@
           <a class="nav-link active" aria-current="page" routerLink="/cart">Ostukorvi</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/add-product">Lisa toode</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/maintain-products">Halda tooteid</a>
+          <a class="nav-link" routerLink="/admin">Admin</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/gift-cards">Kinkekaardid</a>
@@ -25,9 +22,27 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/tootajad">Töötajad</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">Kontakteeru meiega</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/profile">Profiil</a>
+        </li>
       </ul>
-      <img class="icon" src="/i18n/english.png" (click)="useLanguage('en')" alt="">
-      <img class="icon" src="/i18n/estonian.png" (click)="useLanguage('et')" alt="">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <img class="icon" src="/i18n/english.png" (click)="useLanguage('en')" alt="">
+        <img class="icon" src="/i18n/estonian.png" (click)="useLanguage('et')" alt="">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup">Signup</a>
+        </li>
+        <li class="nav-item sum">
+          <img class="icon" src="/cart.png" alt="">
+          <span>{{summa}}</span>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

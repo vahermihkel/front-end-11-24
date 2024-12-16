@@ -6,7 +6,11 @@
 }
 
 @for (product of products; track product) {
-  <div>{{product.nimi}} - {{product.hind }}</div>
+  <div>{{product.toode.nimi}} - {{product.toode.hind }}</div>
+  <button (click)="decreaseKogus(product)">-</button>
+  <div>{{product.kogus}} tk</div>
+  <button (click)="increaseKogus(product)">+</button>
+  <div>{{product.toode.hind * product.kogus}} €</div>
   <button (click)="kustuta($index)">x</button>
 }
 
