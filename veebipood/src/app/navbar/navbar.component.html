@@ -7,9 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <a class="navbar-brand" routerLink="/">Avalehele</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/cart">Ostukorvi</a>
-        </li>
+        </li> -->
         <li class="nav-item">
           <a class="nav-link" routerLink="/admin">Admin</a>
         </li>
@@ -32,16 +32,28 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <img class="icon" src="/i18n/english.png" (click)="useLanguage('en')" alt="">
         <img class="icon" src="/i18n/estonian.png" (click)="useLanguage('et')" alt="">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/signup">Signup</a>
-        </li>
-        <li class="nav-item sum">
+        @if (isLoggedIn === false) {
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signup">Signup</a>
+          </li>
+        } @else {
+          <li class="nav-item">
+            <span class="nav-link" (click)="logout()">Logout</span>
+          </li>
+        }
+       
+        <li class="nav-item sum" routerLink="/cart">
           <img class="icon" src="/cart.png" alt="">
-          <span>{{summa}}</span>
+          <span>{{summa}}€ - {{count}}pcs</span>
         </li>
+        @if (darkTheme === false) {
+          <img class="icon" src="/dark.png" (click)="setDarkMode(true)" alt="">
+        } @else {
+          <img class="icon" src="/light.png" (click)="setDarkMode(false)" alt="">
+        }
       </ul>
     </div>
   </div>

@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { Toode } from '../models/Toode';
 import { OstukorviToode } from '../models/OstukorviToode';
+import { ParcelMachinesComponent } from "./parcel-machines/parcel-machines.component";
+import { PaymentComponent } from "./payment/payment.component";
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [ParcelMachinesComponent, PaymentComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })

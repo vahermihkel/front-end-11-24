@@ -27,10 +27,10 @@ export class AppComponent {
     // this.translate.use('en');
   }
 
-  setDarkMode(isDark: boolean) {
-    this.isDarkMode = isDark;
-    localStorage.setItem("dark-mode", String(isDark));
+  changeDarkMode(darkModeFromNavbar: boolean) {
+    this.isDarkMode = darkModeFromNavbar;
   }
+  
 }
 
 // +ngForm
@@ -69,11 +69,10 @@ export class AppComponent {
 // 4.----> järgi teha
 // L 7.12
 // E 09.12
-// 8. R 13.12 KOJU: Bakery-shop. API otspunktid. Tootajad/Esindused muuda. Subject
-// 9. E 16.12 alamkomponendid. subject. KOJU: Webshop
-//10. N 19.12 
-//11. T 24.12 autentimine
-//12. R 27.12
+// 8. R 13.12 KOJU: Bakery-shop. API otspunktid. Tootajad/Esindused muuda. Subject alamkomponendid. subject. KOJU: Webshop
+// 9. E 23.12
+//10. N 26.12
+//11. L 28.12
 //13. T 31.12
 //14. R 03.01
 // 4. K 08.01

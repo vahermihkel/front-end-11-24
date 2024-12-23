@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +12,15 @@ import { FormsModule, NgForm } from '@angular/forms';
 })
 export class LoginComponent {
 
+  constructor(private authService: AuthService,
+    private router: Router
+  ) {}
+
   login(loginForm: NgForm) {
     console.log(loginForm)
     console.log(loginForm.value);
+    // TODO: Vaata kas ikka tegelikult läheb sisselogituks
+    this.authService.isLoggedIn.next(true);
+    this.router.navigateByUrl("/admin");
   }
 }

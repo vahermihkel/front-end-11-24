@@ -1,0 +1,8 @@
+<button (click)="getPMByCountry('EE')">Eesti</button>
+<button (click)="getPMByCountry('LV')">Läti</button>
+<button (click)="getPMByCountry('LT')">Leedu</button>
+<select>
+@for (pm of parcelMachines; track pm) {
+  <option>{{pm.NAME}}</option>
+}
+</select>

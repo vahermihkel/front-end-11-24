@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Toode } from '../models/Toode';
 import { OstukorviToode } from '../models/OstukorviToode';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,7 @@ export class CartService {
   // subject --> koodi käivitamiseks teistes componentides. globaalsete muutujate tegemiseks
 //             koodi käivitamiseks kui HTML on koguaeg nähtav, aga kuskil teises componendis
 //              käivitatakse mingi kood (see tähendab, et ngOnInit ei käivitu ja update ei toimu)
+  countSubject = new BehaviorSubject<number>(this.calculateCount());
 
   constructor() { }
 
@@ -19,6 +20,14 @@ export class CartService {
     let summa = 0;
     this.cart.forEach(ostukorviToode => {
       summa += ostukorviToode.toode.hind * ostukorviToode.kogus;
+    });
+    return summa;
+  }
+
+  calculateCount() {
+    let summa = 0;
+    this.cart.forEach(ostukorviToode => {
+      summa += ostukorviToode.kogus;
     });
     return summa;
   }
@@ -40,17 +49,21 @@ export class CartService {
       this.cart.push(ostukorviToode);
     }  
     this.sumSubject.next(this.calculateSumOfCart());
-    // this.sum = this.sum + toode.hind;
+    this.countSubject.next(this.calculateCount());
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   removeFromCart(index: number) {
     this.cart.splice(index,1); // esimene nr mitmendat kustutan, teine nr mitu tk
+    this.sumSubject.next(this.calculateSumOfCart());
+    this.countSubject.next(this.calculateCount());
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   emptyCart() {
     this.cart.splice(0); // alates 0ndast indexist, kui teist nr pole, siis lõpuni välja
+    this.sumSubject.next(this.calculateSumOfCart());
+    this.countSubject.next(this.calculateCount());
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
@@ -61,12 +74,14 @@ export class CartService {
       this.removeFromCart(i);
     }
     this.sumSubject.next(this.calculateSumOfCart());
+    this.countSubject.next(this.calculateCount());
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 
   increaseQuantity(ostukorviToode: OstukorviToode) {
     ostukorviToode.kogus++;
     this.sumSubject.next(this.calculateSumOfCart());
+    this.countSubject.next(this.calculateCount());
     localStorage.setItem("cart", JSON.stringify(this.cart));
   }
 }
