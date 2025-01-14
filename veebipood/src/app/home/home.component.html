@@ -24,13 +24,17 @@
 <label>Otsi</label>
 <input [(ngModel)]="otsing" (ngModelChange)="otsi()" type="text">
 <!-- <button (click)="otsi()">Otsi</button> -->
+<br>
+<label>Nime tähemärkide arv</label>
+<input [(ngModel)]="tahemargid" type="range" min="2" max="10" >
+<span>{{tahemargid}}</span>
 
 @for (toode of tooted; track toode) {
   <br>
   <img class="product-image" src={{toode.pilt}} alt="">
   <!-- <img [src]="toode.pilt" alt=""> -->
 
-  <div>{{toode.nimi}}</div>
+  <div>{{toode.nimi | shortener:tahemargid }}</div>
   <div>{{toode.hind}} €</div>
   <button [disabled]="toode.aktiivne === false" (click)="lisaOstukorvi(toode)">{{"add-to-cart"  | translate}}</button>
   <button routerLink="{{'/toode/' + toode.nimi}}">Vt lähemalt</button>

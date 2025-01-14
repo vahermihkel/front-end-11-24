@@ -3,11 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { Toode } from '../../models/Toode';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ExtenderDirective } from '../../directives/extender.directive';
 
 @Component({
   selector: 'app-add-product',
   standalone: true,
-  imports: [FormsModule, TranslatePipe],
+  imports: [FormsModule, TranslatePipe, ExtenderDirective],
   templateUrl: './add-product.component.html',
   styleUrl: './add-product.component.css'
 })

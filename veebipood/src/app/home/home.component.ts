@@ -7,11 +7,13 @@ import { TranslatePipe } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CurrencyPipe, DatePipe, PercentPipe } from '@angular/common';
+import { ShortenerPipe } from '../pipes/shortener.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [TranslatePipe, FormsModule, RouterLink, DatePipe, PercentPipe, CurrencyPipe], // | translate, [(ngModel)]
+  imports: [TranslatePipe, FormsModule, RouterLink, DatePipe, 
+    PercentPipe, CurrencyPipe, ShortenerPipe], // | translate, [(ngModel)]
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -21,6 +23,7 @@ export class HomeComponent implements OnInit {
   number = 50000000;
   tooted: Toode[] = [];
   otsing = "";
+  tahemargid = 5;
 
   constructor(private productService: ProductService,
     private cartService: CartService,

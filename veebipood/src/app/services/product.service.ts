@@ -14,7 +14,9 @@ export class ProductService {
     {nimi: 'Saab', hind: 50, aktiivne: true, pilt: "https://www.linearity.io/blog/content/images/2023/06/how-to-create-a-car-NewBlogCover.png"},
     {nimi: 'Bentley', hind: 125, aktiivne: false, pilt: "https://www.linearity.io/blog/content/images/2023/06/how-to-create-a-car-NewBlogCover.png"},
     {nimi: 'Nissan', hind: 35, aktiivne: true, pilt: "https://www.linearity.io/blog/content/images/2023/06/how-to-create-a-car-NewBlogCover.png"},
-    {nimi: 'Toyota', hind: 55, aktiivne: true, pilt: "https://www.linearity.io/blog/content/images/2023/06/how-to-create-a-car-NewBlogCover.png"}
+    {nimi: 'Toyota', hind: 55, aktiivne: true, pilt: "https://www.linearity.io/blog/content/images/2023/06/how-to-create-a-car-NewBlogCover.png"},
+    {nimi: 'Tesla Model X Dual Motor', hind: 55, aktiivne: true, pilt: "https://www.linearity.io/blog/content/images/2023/06/how-to-create-a-car-NewBlogCover.png"}
+
   ];
 
   esindused = [

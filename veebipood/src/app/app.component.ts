@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import {TranslateModule} from "@ngx-translate/core";
 import {TranslateService} from "@ngx-translate/core";
 import { NavbarComponent } from "./navbar/navbar.component";
@@ -57,10 +57,10 @@ export class AppComponent {
 // ++Kaardirakendus - Leaflet / Google Maps
 // ++URL parameeter
 // ++Reactive Form
-// pipe  | translate.
+// ++pipe  | translate.
+// ++directives   HTML-atribuut   class=""  disabled   src alt
+// ++alamkomponendid ja andmete saatmine. dark-mode korda teha
 // andmebaas - Firebase
-// alamkomponendid ja andmete saatmine. dark-mode korda teha
-// directives   HTML-atribuut   class=""  disabled
 // Autentimine -> sisselogimine/registreerumine Firebase
 
 // Mobiilirakendused -> Ionic
@@ -71,13 +71,7 @@ export class AppComponent {
 // E 09.12
 // 8. R 13.12 KOJU: Bakery-shop. API otspunktid. Tootajad/Esindused muuda. Subject alamkomponendid. subject. KOJU: Webshop
 // 9. E 23.12
-//10. N 26.12
-//11. L 28.12
-//13. T 31.12
-//14. R 03.01
-// 4. K 08.01
-//15a.K 22.01 9.00-10.30
-//15b.K 29.01 9.00-10.30
+
 
 // 29.01 ---> ametlik lõpuaeg
 
