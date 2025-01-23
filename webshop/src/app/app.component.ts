@@ -12,3 +12,14 @@ import { NavbarComponent } from "./navbar/navbar.component";
 export class AppComponent {
   title = 'webshop';
 }
+
+// T 14.01
+// N 16.01 - db
+// T 21.01 - db+autentimine
+// R 24.01 - autentimine
+// T 28.01 - ülejäänud teemad: CSS, payment, Subject, Cart (LS)
+// T 11.02 --> ?? lõpuprojekti mingisugused tõstatused
+// T 18.02 --> lõpuprojekt valmis (esitlemine). Angularis.
+
+// Koos: Admin kaust + Auth kaust
+// Ülejäänud kõik kodus

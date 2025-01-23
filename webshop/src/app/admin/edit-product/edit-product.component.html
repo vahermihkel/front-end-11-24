@@ -1,1 +1,26 @@
-<p>edit-product works!</p>
+@if (loading === true) {
+  <div>Loading...</div>
+} @else if (editProductForm === undefined) {
+  <div>Toodet ei leitud</div>
+} @else {
+  @if (idUnique === false) {
+    <div>Id pole unikaalne!</div>
+  }
+
+  <form [formGroup]="editProductForm" (submit)="onSubmit()">
+    <label>ID</label><br>
+    <input (ngModelChange)="determineIfIdUnique()" formControlName="id" type="number"><br>
+    <label>Title</label><br>
+    <input formControlName="title" type="text"><br>
+    <label>Price</label><br>
+    <input formControlName="price" type="number"><br>
+    <label>Description</label><br>
+    <input formControlName="description" type="text"><br>
+    <label>Category</label><br>
+    <input formControlName="category" type="text"><br>
+    <label>Image</label><br>
+    <input formControlName="image" type="text"><br>
+    <button [disabled]="!idUnique">Edit</button>
+  </form>
+}
+

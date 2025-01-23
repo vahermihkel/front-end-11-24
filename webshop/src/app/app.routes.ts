@@ -23,7 +23,7 @@ export const routes: Routes = [
   {path: "signup", component: SignupComponent},
   {path: "admin", component: AdminHomeComponent},
   {path: "admin/add-product", component: AddProductComponent},
-  {path: "admin/edit-product", component: EditProductComponent},
+  {path: "admin/edit-product/:id", component: EditProductComponent},
   {path: "admin/manage-categories", component: ManageCategoriesComponent},
   {path: "admin/manage-products", component: ManageProductsComponent},
   {path: "**", component: NotFoundComponent},

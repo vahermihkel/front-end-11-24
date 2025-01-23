@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  products: any;
 
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.productService.getProducts().subscribe(res => {
+      this.products = res;
+    });
+  }
 }

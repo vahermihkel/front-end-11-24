@@ -1,1 +1,18 @@
-<p>add-product works!</p>
+@if (idUnique === false) {
+  <div>Id pole unikaalne!</div>
+}
+<form #addProductForm="ngForm" (submit)="onSubmit(addProductForm)">
+  <label>ID</label><br>
+  <input (ngModelChange)="determineIfIdUnique(addProductForm)" ngModel name="id" type="number"><br>
+  <label>Title</label><br>
+  <input ngModel name="title" type="text"><br>
+  <label>Price</label><br>
+  <input ngModel name="price" type="number"><br>
+  <label>Description</label><br>
+  <input ngModel name="description" type="text"><br>
+  <label>Category</label><br>
+  <input ngModel name="category" type="text"><br>
+  <label>Image</label><br>
+  <input ngModel name="image" type="text"><br>
+  <button [disabled]="!idUnique">Add</button>
+</form>

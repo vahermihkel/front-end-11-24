@@ -1,1 +1,7 @@
-<p>home works!</p>
+@for (product of products; track product) {
+  <img class="image" src={{product.image}} alt="">
+  <div>{{product.title}}</div>
+  <div>{{product.price}}€</div>
+  <button>Lisa ostukorvi</button>
+  <br>
+}
