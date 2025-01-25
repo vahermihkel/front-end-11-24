@@ -16,7 +16,7 @@ export class ManageProductsComponent {
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(res => {
-      this.products = res;
+      this.products = res || [];
     });
   }
 

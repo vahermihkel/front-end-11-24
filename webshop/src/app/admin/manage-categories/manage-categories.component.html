@@ -1,1 +1,10 @@
-<p>manage-categories works!</p>
+<form #addCategoryForm="ngForm" (submit)="onSubmit(addCategoryForm)">
+  <label>Name</label><br>
+  <input ngModel name="name" type="text"><br>
+  <button>Add</button>
+</form>
+
+@for (category of categories; track category) {
+  <div>{{category.name}}</div>
+  <button (click)="deleteCategory(category.name)">X</button>
+}

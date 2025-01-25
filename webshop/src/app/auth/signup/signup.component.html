@@ -1,1 +1,9 @@
-<p>signup works!</p>
+<div>{{message}}</div>
+
+<form #signupForm="ngForm" (submit)="onSubmit(signupForm)">
+  <label>Email</label><br>
+  <input ngModel name="email" type="text"><br>
+  <label>Password</label><br>
+  <input ngModel name="password" type="password"><br>
+  <button>Signup</button>
+</form>

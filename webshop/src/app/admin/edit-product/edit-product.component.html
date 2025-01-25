@@ -17,7 +17,12 @@
     <label>Description</label><br>
     <input formControlName="description" type="text"><br>
     <label>Category</label><br>
-    <input formControlName="category" type="text"><br>
+    <!-- <input formControlName="category" type="text"><br> -->
+    <select formControlName="category">
+      @for (category of categories; track category) {
+        <option [value]="category.name">{{category.name}}</option>
+      }
+    </select><br>
     <label>Image</label><br>
     <input formControlName="image" type="text"><br>
     <button [disabled]="!idUnique">Edit</button>

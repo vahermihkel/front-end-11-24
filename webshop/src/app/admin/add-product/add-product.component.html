@@ -11,7 +11,12 @@
   <label>Description</label><br>
   <input ngModel name="description" type="text"><br>
   <label>Category</label><br>
-  <input ngModel name="category" type="text"><br>
+  <!-- <input ngModel name="category" type="text"><br> -->
+  <select ngModel name="category">
+    @for (category of categories; track category) {
+      <option>{{category.name}}</option>
+    }
+  </select><br>
   <label>Image</label><br>
   <input ngModel name="image" type="text"><br>
   <button [disabled]="!idUnique">Add</button>

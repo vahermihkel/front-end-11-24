@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/Product';
+import { CategoryService } from '../../services/category.service';
+import { Category } from '../../models/Category';
 
 @Component({
   selector: 'app-add-product',
@@ -12,13 +14,19 @@ import { Product } from '../../models/Product';
 })
 export class AddProductComponent {
   private products: Product[] = [];
+  categories: Category[] = [];
   idUnique = true;
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
+    this.categoryService.getCategories().subscribe(res => {
+      this.categories = res || []; // Firebase võib anda "null" väärtuse
+    });
     this.productService.getProducts().subscribe(products => {
-      this.products = products;
+      this.products = products || [];
     })
   }
 

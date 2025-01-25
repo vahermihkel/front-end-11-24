@@ -1,1 +1,13 @@
-<p>profile works!</p>
+<form [formGroup]="editProfileForm" (submit)="onSubmit()">
+  <label>ID</label> <br>
+  <input formControlName="localId" type="text"> <br>
+  <label>Email</label> <br>
+  <input formControlName="email" type="text"> <br>
+  <label>Display name</label> <br>
+  <input formControlName="displayName" type="text"> <br>
+  <label>Photo url</label> <br>
+  <input formControlName="photoUrl" type="text"> <br>
+  <label>Last login at</label> <br>
+  <input formControlName="lastLoginAt" type="text"> <br>
+  <button>Muuda</button>
+</form>

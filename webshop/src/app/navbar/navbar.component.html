@@ -1,5 +1,21 @@
-<button routerLink="/admin">Admin</button>
+@if (loggedIn === true) {
+  <button routerLink="/admin">Admin</button>
+}
+<!-- @if (loggedIn === true) {
+  <button >Profile</button>
+} -->
 <button routerLink="/cart">Cart</button>
 <button routerLink="/">Home</button>
-<button routerLink="/login">Login</button>
+@if (loggedIn === true) {
+  <button (click)="logout()">Logout</button>
+} @else {
+  <button routerLink="/login">Login</button>
+  <button routerLink="/signup">Signup</button>
+}
+@if (user !== undefined) {
+  <div routerLink="/profile">
+    {{user.displayName}}
+    <img class="photo" [src]="user.photoUrl" alt="">
+  </div>
+}
 <br><br>

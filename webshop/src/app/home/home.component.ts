@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
+import { CategoryService } from '../services/category.service';
+import { Product } from '../models/Product';
+import { Category } from '../models/Category';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +12,25 @@ import { ProductService } from '../services/product.service';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  products: any;
+  private dbProducts: Product[] = [];
+  products: Product[] = [];
+  categories: Category[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService,
+    private categoryService: CategoryService
+  ) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(res => {
-      this.products = res;
+    this.categoryService.getCategories().subscribe(res => {
+      this.categories = res || []; // Firebase võib anda "null" väärtuse
     });
+    this.productService.getProducts().subscribe(res => {
+      this.products = res || [];
+      this.dbProducts = res || [];
+    });
+  }
+
+  filterByCategory(categoryName: string) {
+    this.products = this.dbProducts.filter(product => product.category === categoryName)
   }
 }

@@ -3,6 +3,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ProductService } from '../../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/Product';
+import { CategoryService } from '../../services/category.service';
+import { Category } from '../../models/Category';
 
 @Component({
   selector: 'app-edit-product',
@@ -13,6 +15,7 @@ import { Product } from '../../models/Product';
 })
 export class EditProductComponent {
   private products: Product[] = [];
+  categories: Category[] = [];
   editProductForm!: FormGroup;
   loading = true;
   idUnique = true;
@@ -21,17 +24,22 @@ export class EditProductComponent {
 
   constructor(private productService: ProductService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private categoryService: CategoryService
   ) {}
 
   ngOnInit(): void {
+    this.categoryService.getCategories().subscribe(res => {
+      this.categories = res || []; // Firebase võib anda "null" väärtuse
+    });
+
     const urlId = this.route.snapshot.paramMap.get("id");
     if (urlId === null) {
       return;
     }
     this.urlId = Number(urlId);
     this.productService.getProducts().subscribe(products => {
-      this.products = products;
+      this.products = products || [];
       const product = products.find(p => p.id === Number(urlId));
       this.loading = false;
       if (product === undefined) {

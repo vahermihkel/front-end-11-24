@@ -1,3 +1,8 @@
+@for (category of categories; track category) {
+  <button (click)="filterByCategory(category.name)">{{category.name}}</button>
+}
+<br><br>
+
 @for (product of products; track product) {
   <img class="image" src={{product.image}} alt="">
   <div>{{product.title}}</div>
